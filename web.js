@@ -5,14 +5,15 @@ var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
   buf = new Buffer(256);
-  fs.readFileSync('./index.html', 'utf8', function(err, data) {
+  fs.readFileSync('./index.html', 'ascii', function(err, data) {
     if (err) throw err;
     console.log(data);
-    buf.write(data);
+    buf.write(data, 'ascii');
 
   });
   
-
+  console.log('Hello');
+  console.log('buf.toString('ascii'));
 
   response.send(buf.toString());
 });
