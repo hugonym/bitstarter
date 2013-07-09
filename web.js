@@ -13,7 +13,7 @@ app.get('/', function(request, response) {
 
   });
   
-  response.send(buf.toString());
+  response.send(buf.toString('utf8', 0, len));
 });
 
 var port = process.env.PORT || 5000;
