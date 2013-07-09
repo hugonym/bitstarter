@@ -7,10 +7,8 @@ app.get('/', function(request, response) {
   buf = new Buffer(256);
   len = buf.write("empty buffer");
   fs.readFileSync('./index.html', 'utf8', function(err, data) {
-    if (err) throw err;
-    console.log(data);
+    if (err) len = buf.write(err);
     len = buf.write(data);
-
   });
   
   response.send(buf.toString('utf8', 0, len));
